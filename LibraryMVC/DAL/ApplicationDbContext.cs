@@ -5,20 +5,23 @@ using System.Web;
 using LibraryMVC.Models;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace LibraryMVC.DAL
 {
-    public class LibraryContext : DbContext
+
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public LibraryContext() : base("LibraryContext")
+        public ApplicationDbContext()
+            : base("LibraryContext", throwIfV1Schema: false)
         {
         }
 
         public DbSet<Category> Categories { get; set; }
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        public static ApplicationDbContext Create()
         {
-            //modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            return new ApplicationDbContext();
         }
     }
 }
