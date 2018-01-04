@@ -12,97 +12,112 @@ using LibraryMVC.ViewModels;
 
 namespace LibraryMVC.Controllers
 {
-    public class CategoryController : Controller
+    public class BookController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Category
+        // GET: Book
         public ActionResult Index()
         {
-            var model = db.Categories.Select(c => new IndexCategory { Id = c.Id, Name = c.Name, ParrentName = c.RootCategory.Name }).ToList();
-            return View(model);
+            return View(db.Books.ToList());
         }
 
-        // GET: Category/Create
+        // GET: Book/Details/5
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Book book = db.Books.Find(id);
+            if (book == null)
+            {
+                return HttpNotFound();
+            }
+            return View(book);
+        }
+
+        // GET: Book/Create
         public ActionResult Create()
         {
-            ViewBag.RootCategoryId = new SelectList(db.Categories, "Id", "Name");
+            ViewBag.Categories = new SelectList(db.Categories, "Id", "Name");
+            db.SaveChanges();
             return View();
         }
 
-        // POST: Category/Create
+        // POST: Book/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,RootCategoryId")] Category category)
+        public ActionResult Create([Bind(Include = "Id,Title,Author,ISBN")] Book book, int categories)
         {
             if (ModelState.IsValid)
             {
-                db.Categories.Add(category);
+                var model = db.Categories.Where(a => a.Id == categories).FirstOrDefault();
+                book.Category = model;
+                book.Available = true;
+                db.Books.Add(book);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.RootCategoryId = new SelectList(db.Categories, "Id", "Name", category.RootCategoryId);
-            return View(category);
+            return View(book);
         }
 
-        // GET: Category/Edit/5
+        // GET: Book/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = db.Categories.Find(id);
-            if (category == null)
+            Book book = db.Books.Find(id);
+            if (book == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.RootCategoryId = new SelectList(db.Categories, "Id", "Name", category.RootCategoryId);
-            return View(category);
+            return View(book);
         }
 
-        // POST: Category/Edit/5
+        // POST: Book/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,RootCategoryId")] Category category)
+        public ActionResult Edit([Bind(Include = "Id,Title,Author,ISBN,Available")] Book book)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(category).State = EntityState.Modified;
+                db.Entry(book).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.RootCategoryId = new SelectList(db.Categories, "Id", "Name", category.RootCategoryId);
-            return View(category);
+            return View(book);
         }
 
-        // GET: Category/Delete/5
+        // GET: Book/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = db.Categories.Find(id);
-            if (category == null)
+            Book book = db.Books.Find(id);
+            if (book == null)
             {
                 return HttpNotFound();
             }
-            return View(category);
+            return View(book);
         }
 
-        // POST: Category/Delete/5
+        // POST: Book/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Category category = db.Categories.Find(id);
-            db.Categories.Remove(category);
+            Book book = db.Books.Find(id);
+            db.Books.Remove(book);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

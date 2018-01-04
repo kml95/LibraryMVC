@@ -1,11 +1,12 @@
-﻿using System;
+﻿using LibraryMVC.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace LibraryMVC.Models
+namespace LibraryMVC.ViewModels
 {
-    public class Book
+    public class AddBook
     {
         public int Id { get; set; }
 
@@ -14,12 +15,9 @@ namespace LibraryMVC.Models
         public string Author { get; set; }
 
         public string ISBN { get; set; }
+        
+        public string[] Tags { get; set; }
 
-        public bool Available { get; set; }
-
-        public virtual Category Category { get; set; }
-
-        public virtual ICollection<BookTag> BookTags { get; set; }
-
+        public List<Category> Categories { get; set; }
     }
 }

@@ -1,0 +1,19 @@
+﻿@model LibraryMVC.Models.Book
+
+@{
+    ViewBag.Title = "Tags";
+}
+
+<h2>Tags</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.Label("Books", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("Categories", null, "", htmlAttributes: new { @class = "form-control" })
+        </div>
+    </div>
+}
