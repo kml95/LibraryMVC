@@ -192,6 +192,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BookController.cs" />
     <Compile Include="Controllers\BookTagController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -223,6 +224,7 @@
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\BookTagBook.cs" />
     <Compile Include="Models\BookTag.cs" />
+    <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Lend.cs" />
     <Compile Include="Models\Queue.cs" />
@@ -307,6 +309,7 @@
     <Content Include="Views\BookTag\Edit.cshtml" />
     <Content Include="Views\BookTag\Index.cshtml" />
     <Content Include="Views\Book\Create2.cshtml" />
+    <Content Include="Views\Cart\ShowCart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

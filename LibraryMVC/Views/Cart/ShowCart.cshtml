@@ -1,0 +1,25 @@
+﻿@model LibraryMVC.Models.Cart
+@{
+    ViewBag.Title = "ShowCart";
+}
+
+<h2>Your Cart</h2>
+@if (Model != null)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Tytul</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.books)
+            {
+                <tr>
+                    <td>@item.Title</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
