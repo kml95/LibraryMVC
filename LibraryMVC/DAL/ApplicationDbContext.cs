@@ -19,13 +19,15 @@ namespace LibraryMVC.DAL
 
         public DbSet<Category> Categories { get; set; }
         public DbSet<Book> Books { get; set; }
-
+        public DbSet<BookTag> BookTags { get; set; }
+        public DbSet<Queue> Queues { get; set; }
+        public DbSet<Lend> Borrows { get; set; }
 
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
 
-        public System.Data.Entity.DbSet<LibraryMVC.Models.BookTag> BookTags { get; set; }
+        
     }
 }

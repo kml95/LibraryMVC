@@ -215,6 +215,10 @@
     <Compile Include="Migrations\201801101753302_AddModels.Designer.cs">
       <DependentUpon>201801101753302_AddModels.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801101828115_AddDbSets.cs" />
+    <Compile Include="Migrations\201801101828115_AddDbSets.Designer.cs">
+      <DependentUpon>201801101828115_AddDbSets.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\BookTagBook.cs" />
@@ -332,6 +336,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801101753302_AddModels.resx">
       <DependentUpon>201801101753302_AddModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801101828115_AddDbSets.resx">
+      <DependentUpon>201801101828115_AddDbSets.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
