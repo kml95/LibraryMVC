@@ -191,6 +191,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BookController.cs" />
+    <Compile Include="Controllers\BookTagController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -210,11 +211,17 @@
     <Compile Include="Migrations\201801041618051_BookTag.Designer.cs">
       <DependentUpon>201801041618051_BookTag.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801101753302_AddModels.cs" />
+    <Compile Include="Migrations\201801101753302_AddModels.Designer.cs">
+      <DependentUpon>201801101753302_AddModels.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\BookTagBook.cs" />
     <Compile Include="Models\BookTag.cs" />
     <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Lend.cs" />
+    <Compile Include="Models\Queue.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="ViewModels\BookViewModels.cs" />
@@ -290,6 +297,12 @@
     <Content Include="Views\Book\Edit.cshtml" />
     <Content Include="Views\Book\Index.cshtml" />
     <Content Include="Views\Book\Tags.cshtml" />
+    <Content Include="Views\BookTag\Create.cshtml" />
+    <Content Include="Views\BookTag\Delete.cshtml" />
+    <Content Include="Views\BookTag\Details.cshtml" />
+    <Content Include="Views\BookTag\Edit.cshtml" />
+    <Content Include="Views\BookTag\Index.cshtml" />
+    <Content Include="Views\Book\Create2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -316,6 +329,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801041618051_BookTag.resx">
       <DependentUpon>201801041618051_BookTag.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801101753302_AddModels.resx">
+      <DependentUpon>201801101753302_AddModels.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

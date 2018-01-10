@@ -21,5 +21,9 @@ namespace LibraryMVC.Models
 
         public virtual ICollection<BookTag> BookTags { get; set; }
 
+        public virtual ICollection<Lend> Borrows { get; set; }
+
+        public virtual ICollection<Queue> Queues { get; set; }
+
     }
 }
