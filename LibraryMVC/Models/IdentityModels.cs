@@ -13,6 +13,7 @@ namespace LibraryMVC.Models
         public virtual ICollection<Lend> Borrows { get; set; }
 
         public virtual ICollection<Queue> Queues { get; set; }
+        public virtual ICollection<History> Histories { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

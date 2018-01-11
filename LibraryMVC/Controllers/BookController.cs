@@ -27,12 +27,8 @@ namespace LibraryMVC.Controllers
         }
 
         // GET: Book
-        public ActionResult Index(List<Book> SearchList)
+        public ActionResult Index()
         {
-            if (SearchList != null)
-            {
-                return View(SearchList);
-            }
             return View(db.Books.ToList());
         }
 
@@ -188,7 +184,24 @@ namespace LibraryMVC.Controllers
                 model = model.Where(a => a.ISBN.ToLower().Equals(isbn.ToLower()));
             }
 
-            return View("Index", model.ToList());
+
+            return View("Search", model.ToList());
         }
+
+        [HttpGet]
+        public ActionResult Search(List<Book> SearchList)
+        {
+            return View(SearchList);
+        }
+
+        [HttpGet]
+        [ActionName("Search")]
+        public ActionResult SearchPost(List<Book> SearchList)
+        {
+            return View(SearchList);
+        }
+
+
+
     }
 }

@@ -1,0 +1,65 @@
+﻿@model IEnumerable<LibraryMVC.Models.Book>
+
+@{
+    ViewBag.Title = "Search";
+}
+
+<h2>Search</h2>
+
+
+@using (Html.BeginForm("Search", "Book", FormMethod.Post, new { model = Model} ))
+{
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Author)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ISBN)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Available)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Author)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ISBN)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Available)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    @if (item.Available == false)
+                    {
+                        <p style="display:inline"> | @Html.ActionLink("Add to queue", "AddToQueue", "Book", new { id = item.Id }, null) </p>
+                    }
+                    else
+                    {
+                        <p style="display:inline"> | @Html.ActionLink("Add to cart", "AddToCart", "Cart", new { id = item.Id }, null) </p>
+
+                    }
+                </td>
+            </tr>
+        }
+
+    </table>
+    <input type="submit" value="Save your search" class="btn btn-default" />
+}
+

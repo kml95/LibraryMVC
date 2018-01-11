@@ -220,12 +220,17 @@
     <Compile Include="Migrations\201801101828115_AddDbSets.Designer.cs">
       <DependentUpon>201801101828115_AddDbSets.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801111800265_AddHistory.cs" />
+    <Compile Include="Migrations\201801111800265_AddHistory.Designer.cs">
+      <DependentUpon>201801111800265_AddHistory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\BookTagBook.cs" />
     <Compile Include="Models\BookTag.cs" />
     <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\History.cs" />
     <Compile Include="Models\Lend.cs" />
     <Compile Include="Models\Queue.cs" />
     <Compile Include="ViewModels\AccountViewModels.cs" />
@@ -310,6 +315,7 @@
     <Content Include="Views\BookTag\Index.cshtml" />
     <Content Include="Views\Book\Create2.cshtml" />
     <Content Include="Views\Cart\ShowCart.cshtml" />
+    <Content Include="Views\Book\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -342,6 +348,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801101828115_AddDbSets.resx">
       <DependentUpon>201801101828115_AddDbSets.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801111800265_AddHistory.resx">
+      <DependentUpon>201801111800265_AddHistory.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
