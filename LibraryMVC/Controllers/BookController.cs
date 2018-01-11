@@ -28,8 +28,12 @@ namespace LibraryMVC.Controllers
 
         // GET: Book
         [Authorize(Roles = "Admin, Employee")]
-        public ActionResult Index()
+        public ActionResult Index(List<Book> SearchList)
         {
+            if (SearchList != null)
+            {
+                return View(SearchList);
+            }
             return View(db.Books.ToList());
         }
 
@@ -175,6 +179,25 @@ namespace LibraryMVC.Controllers
 
             TempData["Success"] = "Added Successfully!";
             return RedirectToAction("Index");
+        }
+
+        public ActionResult Filters(string title, string author, string isbn)
+        {
+            var model = db.Books.AsQueryable();
+            if (!string.IsNullOrEmpty(title))
+            {
+                model = model.Where(a => a.Title.ToLower().Equals(title.ToLower()));
+            }
+            if (!string.IsNullOrEmpty(author))
+            {
+                model = model.Where(a => a.Author.ToLower().Equals(author.ToLower()));
+            }
+            if (!string.IsNullOrEmpty(isbn))
+            {
+                model = model.Where(a => a.ISBN.ToLower().Equals(isbn.ToLower()));
+            }
+
+            return View("Index", model.ToList());
         }
     }
 }
