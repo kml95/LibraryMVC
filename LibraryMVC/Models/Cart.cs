@@ -7,23 +7,23 @@ namespace LibraryMVC.Models
 {
     public class Cart
     {
-        public List<Book> books { get; set; }
+        public List<Book> Books { get; set; }
 
         public Cart()
         {
-            books = new List<Book>();
+            Books = new List<Book>();
         }
 
-        public bool addBook(Book book)
+        public bool AddBook(Book book)
         {
-            books.Add(book);
+            Books.Add(book);
 
             return true;
         }
 
-        public bool removeBook(Book book)
+        public bool RemoveBook(Book book)
         {
-            books.Remove(book);
+            Books.Remove(book);
 
             return true;
         }
