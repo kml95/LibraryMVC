@@ -9,12 +9,22 @@ using System.Web.Mvc;
 using LibraryMVC.DAL;
 using LibraryMVC.Models;
 using LibraryMVC.ViewModels;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace LibraryMVC.Controllers
 {
     public class BookController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private ApplicationDbContext db;
+        protected UserManager<ApplicationUser> UserManager;
+
+
+        public BookController()
+        {
+            this.db = new ApplicationDbContext();
+            this.UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(this.db));
+        }
 
         // GET: Book
         public ActionResult Index()
@@ -137,6 +147,25 @@ namespace LibraryMVC.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        //[HttpPost]
+        public ActionResult AddToQueue(int id)
+        {
+            Book book = db.Books.Where(b => b.Id == id).FirstOrDefault();
+
+            var user = UserManager.FindById(User.Identity.GetUserId());
+
+            var queue = new Queue();
+            queue.Book = book;
+            queue.User = user;
+
+            book.Queues.Add(queue);
+            db.SaveChanges();
+
+
+            TempData["Success"] = "Added Successfully!";
+            return RedirectToAction("Index");
         }
     }
 }
