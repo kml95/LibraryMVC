@@ -5,13 +5,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace LibraryMVC.Controllers
 {
     public class CartController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private ApplicationDbContext db;
+        private UserManager<ApplicationUser> userManager;
+
         // GET: Cart
+        public CartController()
+        {
+            this.db = new ApplicationDbContext();
+            this.userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(this.db));
+        }
 
         public ActionResult Index()
         {
@@ -65,12 +74,33 @@ namespace LibraryMVC.Controllers
 
         public ActionResult LendBooks()
         {
+            var userModel = userManager.FindById(User.Identity.GetUserId());
+
             Cart cart = Session["Cart"] as Cart;
             if (cart == null || Session["Cart"] == null)
             {
                 cart = new Cart();
                 Session["Cart"] = cart;
             }
+            else
+            {
+                foreach (Book b in cart.Books)
+                {
+                    Book book = db.Books.Where(a => a.Id == b.Id).First();
+                    book.Available = false;
+                    Lend LendBook = new Lend();
+                    LendBook.DateBorrowed = DateTime.Now;
+                    LendBook.DateReturn = DateTime.Now.AddDays(7);
+                    LendBook.User = userModel;
+                    LendBook.Book = book;
+                    LendBook.State = "Borrowed";
+                    book.Borrows.Add(LendBook);
+                    
+                }
+                db.SaveChanges();
+
+            }
+            
             
             //TODO  - napisać logikę
             
