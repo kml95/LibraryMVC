@@ -27,12 +27,14 @@ namespace LibraryMVC.Controllers
         }
 
         // GET: Book
+        [Authorize(Roles = "Admin, Employee")]
         public ActionResult Index()
         {
             return View(db.Books.ToList());
         }
 
         // GET: Book/Details/5
+        [Authorize(Roles = "Admin, Employee")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -48,6 +50,7 @@ namespace LibraryMVC.Controllers
         }
 
         // GET: Book/Create
+        [Authorize(Roles = "Admin, Employee")]
         public ActionResult Create()
         {
             ViewBag.Categories = new SelectList(db.Categories, "Id", "Name");
@@ -68,6 +71,7 @@ namespace LibraryMVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin, Employee")]
         public ActionResult Create([Bind(Include = "Id,Title,Author,ISBN")] Book book, int categories)
         {
             if (ModelState.IsValid)
@@ -84,6 +88,7 @@ namespace LibraryMVC.Controllers
         }
 
         // GET: Book/Edit/5
+        [Authorize(Roles = "Admin, Employee")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -103,6 +108,7 @@ namespace LibraryMVC.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin, Employee")]
         public ActionResult Edit([Bind(Include = "Id,Title,Author,ISBN,Available")] Book book)
         {
             if (ModelState.IsValid)
@@ -115,6 +121,7 @@ namespace LibraryMVC.Controllers
         }
 
         // GET: Book/Delete/5
+        [Authorize(Roles = "Admin, Employee")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -132,6 +139,7 @@ namespace LibraryMVC.Controllers
         // POST: Book/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin, Employee")]
         public ActionResult DeleteConfirmed(int id)
         {
             Book book = db.Books.Find(id);
@@ -150,6 +158,7 @@ namespace LibraryMVC.Controllers
         }
 
         //[HttpPost]
+        [Authorize(Roles = "Reader")]
         public ActionResult AddToQueue(int id)
         {
             Book book = db.Books.Where(b => b.Id == id).FirstOrDefault();
