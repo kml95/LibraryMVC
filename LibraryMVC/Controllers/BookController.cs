@@ -19,7 +19,6 @@ namespace LibraryMVC.Controllers
         private ApplicationDbContext db;
         protected UserManager<ApplicationUser> UserManager;
 
-
         public BookController()
         {
             this.db = new ApplicationDbContext();
@@ -191,22 +190,13 @@ namespace LibraryMVC.Controllers
             {
                 model = model.Where(a => a.ISBN.ToLower().Equals(isbn.ToLower()));
             }
-
-
+            
             return View("Search", model.ToList());
         }
-
-        [HttpGet]
-        public ActionResult Search(List<Book> SearchList)
+        
+        public ActionResult SaveHisotry()
         {
-            return View(SearchList);
-        }
-
-        [HttpGet]
-        [ActionName("Search")]
-        public ActionResult SearchPost(List<Book> SearchList)
-        {
-            return View(SearchList);
+            return View();
         }
 
 
