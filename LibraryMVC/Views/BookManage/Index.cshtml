@@ -6,21 +6,20 @@
 
 <h2>Index</h2>
 
-@if (TempData["Success"] != null)
-{
-    <p class="alert alert-success" id="successMessage">@TempData["Success"]</p>
-}
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
 
 @using (Html.BeginForm("Filters", "Book", FormMethod.Post))
 {
     <div class="form-group">
-            <label style="display:inline" for="title" >Tytuł:</label>
-            <input style="display:inline"type="text" name="title" class="form-control" id="title">
-            <label style="display:inline" for="author">Autor:</label>
-            <input style="display:inline" type="text" name="author" class="form-control" id="author">
-            <label style="display:inline" for="isbn">ISBN:</label>
-            <input style="display:inline" type="text" name="isbn" class="form-control" id="isbn">
-            <input style="display:inline" type="submit" value="Szukaj" class="btn btn-default" />
+        <label style="display:inline" for="title">Tytuł: </label>
+        <input style="display:inline" type="text" name="title" class="form-control" id="title">
+        <label style="display:inline" for="author"> Autor: </label>
+        <input style="display:inline" type="text" name="author" class="form-control" id="author">
+        <label style="display:inline" for="isbn"> ISBN: </label>
+        <input style="display:inline" type="text" name="isbn" class="form-control" id="isbn">
+        <input style="display:inline" type="submit" value="Szukaj" class="btn btn-default" />
     </div>
 
     <table class="table">
@@ -62,19 +61,11 @@
                     @Html.DisplayFor(modelItem => item.Category.Name)
                 </td>
                 <td>
-                    @if (item.Available == false)
-                    {
-                        <p style="display:inline"> | @Html.ActionLink("Add to queue", "AddToQueue", "Book", new { id = item.Id }, null) </p>
-                    }
-                    else
-                    {
-                        <p style="display:inline"> | @Html.ActionLink("Add to cart", "AddToCart", "Cart", new { id = item.Id }, null) </p>
-
-                    }
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
                 </td>
             </tr>
         }
 
     </table>
 }
-

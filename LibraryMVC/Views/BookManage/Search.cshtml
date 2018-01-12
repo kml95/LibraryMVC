@@ -1,28 +1,14 @@
 ﻿@model IEnumerable<LibraryMVC.Models.Book>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Search";
 }
 
-<h2>Index</h2>
+<h2>Search</h2>
 
-@if (TempData["Success"] != null)
+
+@using (Html.BeginForm("Search", "Book", FormMethod.Post, new { model = Model }))
 {
-    <p class="alert alert-success" id="successMessage">@TempData["Success"]</p>
-}
-
-@using (Html.BeginForm("Filters", "Book", FormMethod.Post))
-{
-    <div class="form-group">
-            <label style="display:inline" for="title" >Tytuł:</label>
-            <input style="display:inline"type="text" name="title" class="form-control" id="title">
-            <label style="display:inline" for="author">Autor:</label>
-            <input style="display:inline" type="text" name="author" class="form-control" id="author">
-            <label style="display:inline" for="isbn">ISBN:</label>
-            <input style="display:inline" type="text" name="isbn" class="form-control" id="isbn">
-            <input style="display:inline" type="submit" value="Szukaj" class="btn btn-default" />
-    </div>
-
     <table class="table">
         <tr>
             <th>
@@ -36,9 +22,6 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Available)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Category)
             </th>
             <th></th>
         </tr>
@@ -59,9 +42,10 @@
                     @Html.DisplayFor(modelItem => item.Available)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Category.Name)
-                </td>
-                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
                     @if (item.Available == false)
                     {
                         <p style="display:inline"> | @Html.ActionLink("Add to queue", "AddToQueue", "Book", new { id = item.Id }, null) </p>
@@ -76,5 +60,6 @@
         }
 
     </table>
+    <input type="submit" value="Save your search" class="btn btn-default" />
 }
 
