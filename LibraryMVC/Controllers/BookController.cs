@@ -84,6 +84,45 @@ namespace LibraryMVC.Controllers
             return View();
         }
 
+        [HttpGet]
+        public ActionResult SearchCategory()
+        {
+            ViewBag.MainCategories = new SelectList(db.Categories, "Id", "Name");
+            if (TempData["List"] != null)
+            {
+                return View(TempData["List"]);
+            }
+            var model = db.Books.ToList();
+             return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult SearchCategory(int categories)
+        {
+            List<Book> ListBook = new List<Book>();
+
+            var model = db.Books.Where(a => a.Category.Id == categories).First();
+
+            ListBook = FindBookRootID(categories, ListBook);
+
+            ListBook.Add(model);
+            TempData["List"] = ListBook;
+            return RedirectToAction("SearchCategory");
+        }
+
+        public List<Book> FindBookRootID(int rootId, List<Book> ListBook)
+        {
+            var model = db.Books.Where(a => a.Category.RootCategoryId == rootId).FirstOrDefault();
+            if (model != null)
+            {
+                ListBook.Add(model);
+                return FindBookRootID(model.Category.Id, ListBook);
+            }
+
+                return ListBook;
+            
+        }
+
 
 
     }

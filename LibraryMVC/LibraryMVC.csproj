@@ -303,7 +303,6 @@
     <Content Include="Views\Category\Edit.cshtml" />
     <Content Include="Views\Category\Index.cshtml" />
     <Content Include="Views\Category\Create.cshtml" />
-    <Content Include="Views\Book\Create.cshtml" />
     <Content Include="Views\Book\Index.cshtml" />
     <Content Include="Views\BookTag\Create.cshtml" />
     <Content Include="Views\BookTag\Delete.cshtml" />
@@ -317,6 +316,7 @@
     <Content Include="Views\BookManage\Edit.cshtml" />
     <Content Include="Views\BookManage\Index.cshtml" />
     <Content Include="Views\BookManage\Search.cshtml" />
+    <Content Include="Views\Book\SearchCategory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
