@@ -1,17 +1,16 @@
 ﻿@model IEnumerable<LibraryMVC.Models.Book>
 
 @{
-    ViewBag.Title = "SearchCategory";
+    ViewBag.Title = "SearchByTag";
 }
 
-<h2>SearchCategory</h2>
+<h2>SearchByTag</h2>
+
 @using (Html.BeginForm())
 {
-    @Html.DropDownList("Categories", (IEnumerable<SelectListItem>)ViewBag.MainCategories, "Select category", new { @class = "form-control" })
-    <input style='display:inline;'  type="submit" value="Search" class="btn btn-default" />
+    @Html.DropDownList("BookTags", (IEnumerable<SelectListItem>)ViewBag.Tags, "Select Tag", new { @class = "form-control" })
+    <input style='display:inline;' type="submit" value="Search" class="btn btn-default" />
 }
-
-
 
 <table class="table">
     <tr>
@@ -44,6 +43,18 @@
         <td>
             @Html.DisplayFor(modelItem => item.Available)
         </td>
+        <td>
+            @if (item.Available == false)
+            {
+                <p style="display:inline">  @Html.ActionLink("Add to queue", "AddToQueue", "Book", new { id = item.Id }, null) </p>
+            }
+            else
+            {
+                <p style="display:inline">  @Html.ActionLink("Add to cart", "AddToCart", "Cart", new { id = item.Id }, null) </p>
+
+            }
+        </td>
+
     </tr>
 }
 

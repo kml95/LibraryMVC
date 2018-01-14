@@ -123,6 +123,38 @@ namespace LibraryMVC.Controllers
             
         }
 
+        [HttpGet]
+        public ActionResult SearchByTag()
+        {
+            ViewBag.Tags = new SelectList(db.BookTags, "Id", "Text");
+            if (TempData["BookList"] != null)
+            {
+                return View(TempData["BookList"]);
+            }
+            var model = db.Books.ToList();
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult SearchByTag(int BookTags)
+        {
+            var model = db.BookTags.Where(a => a.Id == BookTags).First();
+            List<Book> ListBook = new List<Book>();
+            foreach(Book b in db.Books)
+            {
+                foreach (BookTag bookTag in b.BookTags)
+                {
+                    if (bookTag.Id == BookTags)
+                    {
+                        ListBook.Add(b);
+                    }
+                }
+            }
+
+            TempData["BookList"] = ListBook;
+            return RedirectToAction("SearchByTag");
+        }
+
 
 
     }
