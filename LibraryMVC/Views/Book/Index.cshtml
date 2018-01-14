@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Books</h2> <br />
 
 @if (TempData["Success"] != null)
 {
@@ -22,6 +22,7 @@
             <input style="display:inline" type="text" name="isbn" class="form-control" id="isbn">
             <input style="display:inline" type="submit" value="Szukaj" class="btn btn-default" />
     </div>
+    <br />
 
     <table class="table">
         <tr>
@@ -46,7 +47,7 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>
+                <td> 
                     @Html.DisplayFor(modelItem => item.Title)
                 </td>
                 <td>
@@ -64,11 +65,11 @@
                 <td>
                     @if (item.Available == false)
                     {
-                        <p style="display:inline"> | @Html.ActionLink("Add to queue", "AddToQueue", "Book", new { id = item.Id }, null) </p>
+                        <p style="display:inline">  @Html.ActionLink("Add to queue", "AddToQueue", "Book", new { id = item.Id }, new { @class = "btn btn-primary" }) </p>
                     }
                     else
                     {
-                        <p style="display:inline"> | @Html.ActionLink("Add to cart", "AddToCart", "Cart", new { id = item.Id }, null) </p>
+                        <p style="display:inline">  @Html.ActionLink("Add to cart", "AddToCart", "Cart", new { id = item.Id }, new { @class = "btn btn-primary" }) </p>
 
                     }
                 </td>

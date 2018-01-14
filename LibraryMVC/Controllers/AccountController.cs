@@ -142,8 +142,8 @@ namespace LibraryMVC.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            ViewBag.Name = new SelectList(db.Roles.Where(u => !u.Name.Contains("Admin"))
-                                    .ToList(), "Name", "Name");
+            //ViewBag.ame = new SelectList(db.Roles.Where(u => !u.Name.Contains("Admin"))
+            //                        .ToList(), "Name", "Name");
 
             return View();
         }
@@ -162,7 +162,7 @@ namespace LibraryMVC.Controllers
                 if (result.Succeeded)
                 {
 
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+                    //await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
 
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
@@ -170,12 +170,21 @@ namespace LibraryMVC.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    await this.UserManager.AddToRoleAsync(user.Id, model.UserRoles);
+                    //var u = UserManager.FindById(User.Identity.GetUserId());
 
-                    return RedirectToAction("Index", "Home");
+                    if (User.IsInRole("Admin")) {
+                        await this.UserManager.AddToRoleAsync(user.Id, "Employee");
+                        return RedirectToAction("Index", "Employee");
+                    } else
+                    {
+                        await this.UserManager.AddToRoleAsync(user.Id, "Reader");
+                        return RedirectToAction("Index", "Reader");
+                    }
+                    
+                    
                 }
-                ViewBag.Name = new SelectList(db.Roles.Where(u => !u.Name.Contains("Admin"))
-                                  .ToList(), "Name", "Name");
+                //ViewBag.Name = new SelectList(db.Roles.Where(u => !u.Name.Contains("Admin"))
+                //                  .ToList(), "Name", "Name");
                 AddErrors(result);
             }
 

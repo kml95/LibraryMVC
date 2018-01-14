@@ -13,13 +13,13 @@ using System.Web.Mvc;
 
 namespace LibraryMVC.Controllers
 {
-    [Authorize(Roles = "Admin")]
-    public class EmployeeController : Controller
+    [Authorize(Roles = "Employee")]
+    public class ReaderController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
         protected UserManager<ApplicationUser> UserManager;
 
-        public EmployeeController()
+        public ReaderController()
         {
             this.db = new ApplicationDbContext();
             this.UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(this.db));
@@ -28,9 +28,9 @@ namespace LibraryMVC.Controllers
         // GET: Employee
         public ActionResult Index()
         {
-            var roleId = db.Roles.Where(r => r.Name == "Employee").FirstOrDefault().Id;
+            var roleId = db.Roles.Where(r => r.Name == "Reader").FirstOrDefault().Id;
 
-            var model = db.Users.Where(r => r.Roles.Where(a => a.RoleId == roleId).Any()).Select(u => new EmployeeViewModels { Id = u.Id, Email = u.Email, Role = "Employee" }).ToList();
+            var model = db.Users.Where(r => r.Roles.Where(a => a.RoleId == roleId).Any()).Select(u => new EmployeeViewModels { Id = u.Id, Email = u.Email, Role = "Reader" }).ToList();
 
             return View(model);
         }
@@ -43,8 +43,8 @@ namespace LibraryMVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            EmployeeViewModels user = db.Users.Where(u => u.Id == id).Select(u => new EmployeeViewModels { Id = u.Id, Email = u.Email, Role = "Employee" }).First();
-   
+            EmployeeViewModels user = db.Users.Where(u => u.Id == id).Select(u => new EmployeeViewModels { Id = u.Id, Email = u.Email, Role = "Reader" }).First();
+
             if (user == null)
             {
                 return HttpNotFound();
@@ -68,7 +68,7 @@ namespace LibraryMVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            EmployeeViewModels user = db.Users.Where(u => u.Id == id).Select(u => new EmployeeViewModels { Id = u.Id, Email = u.Email, Role = "Employee" }).First();
+            EmployeeViewModels user = db.Users.Where(u => u.Id == id).Select(u => new EmployeeViewModels { Id = u.Id, Email = u.Email, Role = "Reader" }).First();
             if (user == null)
             {
                 return HttpNotFound();
@@ -89,11 +89,8 @@ namespace LibraryMVC.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            EmployeeViewModels model = db.Users.Where(u => u.Id == user.Id).Select(u => new EmployeeViewModels { Id = u.Id, Email = u.Email, Role = "Employee" }).First();
+            EmployeeViewModels model = db.Users.Where(u => u.Id == user.Id).Select(u => new EmployeeViewModels { Id = u.Id, Email = u.Email, Role = "Reader" }).First();
             return View(model);
         }
-
-
-
     }
 }
