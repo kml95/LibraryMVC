@@ -150,5 +150,24 @@ namespace LibraryMVC.Controllers
         {
             return View(SearchList);
         }
+        [HttpGet]
+        public ActionResult BookTag(int id)
+        {
+            ViewBag.Tags = new SelectList(db.BookTags, "Id", "Text");
+            TempData["Bookid"] = id;
+            var model = db.Books.Where(a => a.Id == id).First();
+            return View(model);
+        }
+        [HttpPost]
+        public ActionResult BoogTag(int Tags, int bookId)
+        {
+            var model = db.Books.Where(a => a.Id == bookId).First();
+            var tag = db.BookTags.Where(a => a.Id == Tags).First();
+            model.BookTags.Add(tag);
+            db.SaveChanges();
+            
+            return RedirectToAction("Index");
+        }
+
     }
 }
