@@ -195,6 +195,7 @@
     <Compile Include="Controllers\BookTagController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="DAL\ApplicationDbContext.cs" />
@@ -238,6 +239,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="ViewModels\BookViewModels.cs" />
     <Compile Include="ViewModels\CategoryViewModels.cs" />
+    <Compile Include="ViewModels\EmployeeViewModels.cs" />
     <Compile Include="ViewModels\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -317,7 +319,8 @@
     <Content Include="Views\BookManage\Index.cshtml" />
     <Content Include="Views\BookManage\Search.cshtml" />
     <Content Include="Views\Book\SearchCategory.cshtml" />
-    <Content Include="Views\BookManage\BookTag.cshtml" />
+	<Content Include="Views\Employee\Index.cshtml" />
+	 <Content Include="Views\BookManage\BookTag.cshtml" />
     <Content Include="Views\Book\SearchByTag.cshtml" />
   </ItemGroup>
   <ItemGroup>
