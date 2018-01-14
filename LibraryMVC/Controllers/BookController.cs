@@ -20,7 +20,6 @@ namespace LibraryMVC.Controllers
         private ApplicationDbContext db;
         protected UserManager<ApplicationUser> UserManager;
 
-
         public BookController()
         {
             this.db = new ApplicationDbContext();
@@ -76,22 +75,52 @@ namespace LibraryMVC.Controllers
             {
                 model = model.Where(a => a.ISBN.ToLower().Equals(isbn.ToLower()));
             }
-
-
+            
             return View("Search", model.ToList());
+        }
+        
+        public ActionResult SaveHisotry()
+        {
+            return View();
         }
 
         [HttpGet]
-        public ActionResult Search(List<Book> SearchList)
+        public ActionResult SearchCategory()
         {
-            return View(SearchList);
+            ViewBag.MainCategories = new SelectList(db.Categories, "Id", "Name");
+            if (TempData["List"] != null)
+            {
+                return View(TempData["List"]);
+            }
+            var model = db.Books.ToList();
+             return View(model);
         }
 
         [HttpPost]
-        [ActionName("Search")]
-        public ActionResult SearchPost(List<Book> SearchList)
+        public ActionResult SearchCategory(int categories)
         {
-            return View(SearchList);
+            List<Book> ListBook = new List<Book>();
+
+            var model = db.Books.Where(a => a.Category.Id == categories).First();
+
+            ListBook = FindBookRootID(categories, ListBook);
+
+            ListBook.Add(model);
+            TempData["List"] = ListBook;
+            return RedirectToAction("SearchCategory");
+        }
+
+        public List<Book> FindBookRootID(int rootId, List<Book> ListBook)
+        {
+            var model = db.Books.Where(a => a.Category.RootCategoryId == rootId).FirstOrDefault();
+            if (model != null)
+            {
+                ListBook.Add(model);
+                return FindBookRootID(model.Category.Id, ListBook);
+            }
+
+                return ListBook;
+            
         }
 
 
