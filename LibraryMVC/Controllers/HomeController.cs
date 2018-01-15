@@ -1,4 +1,7 @@
-﻿using System;
+﻿using LibraryMVC.DAL;
+using LibraryMVC.Models;
+using LibraryMVC.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +11,17 @@ namespace LibraryMVC.Controllers
 {
     public class HomeController : Controller
     {
+        private ApplicationDbContext db = new ApplicationDbContext();
+
         public ActionResult Index()
         {
-            return View();
+            IEnumerable<New> news = new List<New>();
+            IEnumerable<Book> books = new List<Book>();
+            news = db.News.OrderByDescending(n => n.Id).Take(3).ToList();
+            books = db.Books.OrderByDescending(n => n.Id).Take(3).ToList();
+
+            var model = db.News.Select(s => s.)
+            return View(model);
         }
 
         public ActionResult About()

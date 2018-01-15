@@ -1,8 +1,50 @@
-﻿@{
+﻿@model IEnumerable<LibraryMVC.ViewModels.HomeViewModel>
+@{
     ViewBag.Title = "Home Page";
 }
-
 
 @section AddToHead{
     <img src="~/Content/images/background.jpg" alt="Sample Photo" width="1600" height="650"/>
 }
+
+<h2>The News</h2> <br />
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.News)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.News)
+            </td>
+        </tr>
+    }
+
+</table>
+
+<h2>The Books</h2> <br />
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Books)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Books)
+            </td>
+        </tr>
+    }
+
+</table>

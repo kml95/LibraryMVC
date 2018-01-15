@@ -22,6 +22,7 @@ namespace LibraryMVC.DAL
         public DbSet<BookTag> BookTags { get; set; }
         public DbSet<Queue> Queues { get; set; }
         public DbSet<Lend> Borrows { get; set; }
+        public DbSet<New> News { get; set; }
 
         public static ApplicationDbContext Create()
         {

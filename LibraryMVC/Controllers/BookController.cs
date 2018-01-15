@@ -101,7 +101,7 @@ namespace LibraryMVC.Controllers
         {
             List<Book> ListBook = new List<Book>();
 
-            var model = db.Books.Where(a => a.Category.Id == categories).First();
+            var model = db.Books.Where(a => a.Category.Id == categories).FirstOrDefault();
 
             ListBook = FindBookRootID(categories, ListBook);
 

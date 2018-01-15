@@ -4,14 +4,15 @@
     ViewBag.Title = "SearchCategory";
 }
 
-<h2>SearchCategory</h2>
+<h2>SearchCategory</h2><br />
 @using (Html.BeginForm())
 {
     @Html.DropDownList("Categories", (IEnumerable<SelectListItem>)ViewBag.MainCategories, "Select category", new { @class = "form-control" })
+    <br />
     <input style='display:inline;'  type="submit" value="Search" class="btn btn-default" />
 }
 
-
+<br />
 
 <table class="table">
     <tr>
