@@ -321,9 +321,9 @@
     <Content Include="Views\BookManage\Index.cshtml" />
     <Content Include="Views\BookManage\Search.cshtml" />
 	<Content Include="Views\Book\SearchCategory.cshtml" />
-	<Content Include="Views\Employee\Index.cshtml" />
 	<Content Include="Views\BookManage\BookTag.cshtml" />
-    <Content Include="Views\Book\SearchByTag.cshtml" />
+	<Content Include="Views\Book\SearchByTag.cshtml" />
+	<Content Include="Views\Employee\Index.cshtml" />
 	<Content Include="Views\Employee\Delete.cshtml" />
     <Content Include="Views\Employee\Edit.cshtml" />
     <Content Include="Views\Reader\Index.cshtml" />
