@@ -1,4 +1,4 @@
-﻿@model IEnumerable<LibraryMVC.Models.Book>
+﻿@model IEnumerable<LibraryMVC.Models.Lend>
 
 @{
     ViewBag.Title = "ReturnBook";
@@ -11,16 +11,19 @@
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Title)
+                @Html.DisplayNameFor(model => model.Book.Title)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Author)
+                @Html.DisplayNameFor(model => model.Book.Author)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ISBN)
+                @Html.DisplayNameFor(model => model.Book.ISBN)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Available)
+                @Html.DisplayNameFor(model => model.DateBorrowed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateReturn)
             </th>
             <th></th>
         </tr>
@@ -29,19 +32,22 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Title)
+                    @Html.DisplayFor(modelItem => item.Book.Title)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Author)
+                    @Html.DisplayFor(modelItem => item.Book.Author)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.ISBN)
+                    @Html.DisplayFor(modelItem => item.Book.ISBN)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Available)
+                    @Html.DisplayFor(modelItem => item.DateBorrowed)
                 </td>
                 <td>
-                    @Html.Hidden("id", item.Id)
+                    @Html.DisplayFor(modelItem => item.DateReturn)
+                </td>
+                <td>
+                    @Html.Hidden("id", item.Book.Id)
                     <input type="submit" value="Return book" class="btn btn-default" />
                 </td>
             </tr>

@@ -168,7 +168,7 @@ namespace LibraryMVC.Controllers
                 ListBook.Add(L.Book);
             }
 
-            return View(ListBook);
+            return View(model);
         }
 
         [HttpPost]
@@ -252,13 +252,14 @@ namespace LibraryMVC.Controllers
                 {
                     l.Book.Available = false;
                     l.DateBorrowed = DateTime.Now;
+                    l.DateReturn = DateTime.Now.AddDays(7);
                     l.State = "Borrowed";
                     db.SaveChanges();
                 }
             }
 
 
-            return View(model);
+            return RedirectToAction("BookWaitingOnUser");
         }
 
 
