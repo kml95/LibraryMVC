@@ -16,7 +16,7 @@ using System.Net.Mail;
 
 namespace LibraryMVC.Controllers
 {
-    [Authorize(Roles = "Reader")]
+    [Authorize(Roles = "Reader, Admin, Employee")]
     public class BookController : Controller
     {
         private ApplicationDbContext db;
@@ -186,6 +186,7 @@ namespace LibraryMVC.Controllers
                 lendBook.User = modelQueue.User;
                 lendBook.Book = modelBook;
                 lendBook.State = "Waiting For akcept by user";
+                modelBook.Available = false;
 
                 // Send mail to user
                 var body = "<p>Email From: {0} ({1})</p><p>Message:</p><p>{2}</p>";
@@ -204,7 +205,7 @@ namespace LibraryMVC.Controllers
 
                 db.Queues.Remove(modelQueue);
                 db.Borrows.Add(lendBook);
-                modelBook.Available = false;
+                //modelBook.Available = false;
             }
 
             db.Borrows.Remove(modelLend);

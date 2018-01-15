@@ -36,7 +36,17 @@
                     {
                         if (User.IsInRole("Admin"))
                         {
-                            <li>@Html.ActionLink("Books", "Index", "BookManage")</li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    Books
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>@Html.ActionLink("All Books", "Index", "BookManage")</li>
+                                    <li>@Html.ActionLink("Search by category", "SearchCategory", "Book")</li>
+                                    <li>@Html.ActionLink("Seach by tag", "SearchByTag", "Book")</li>
+                                </ul>
+                            </li>
                             <li>@Html.ActionLink("Employees", "Index", "Employee")</li>
                             <li>@Html.ActionLink("Categories", "Index", "Category")</li>
                             <li>@Html.ActionLink("BookTags", "Index", "BookTag")</li>
@@ -46,12 +56,21 @@
                         }
                         if (User.IsInRole("Employee"))
                         {
-                            <li>@Html.ActionLink("Books", "Index", "BookManage")</li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    Books
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>@Html.ActionLink("All Books", "Index", "BookManage")</li>
+                                    <li>@Html.ActionLink("Search by category", "SearchCategory", "Book")</li>
+                                    <li>@Html.ActionLink("Seach by tag", "SearchByTag", "Book")</li>
+                                </ul>
+                            </li>
                             <li>@Html.ActionLink("Readers", "Index", "Reader")</li>
-                            @*<li>@Html.ActionLink("Lends", "Index", "Reader")</li>*@
                             <li>@Html.ActionLink("Categories", "Index", "Category")</li>
                             <li>@Html.ActionLink("BookTags", "Index", "BookTag")</li>
-                            @*<li>@Html.ActionLink("Lends", "Index", "Lend")</li>*@
+                            <li>@Html.ActionLink("Lends", "Index", "Lend")</li>
 
                         }
                         if (User.IsInRole("Reader"))
@@ -68,8 +87,11 @@
                                 </ul>
                             </li>
                             <li>@Html.ActionLink("Your Cart", "ShowCart", "Cart")</li>
-                            @*<li>@Html.ActionLink("Lends", "Index", "Lend")</li>
-                            <li>@Html.ActionLink("Queues", "Index", "")</li>*@
+                            <li>@Html.ActionLink("Your Queues", "Queue", "Book")</li>
+                            <li>@Html.ActionLink("To Lend", "BookWaitingOnUser", "Book")</li>
+                            <li>@Html.ActionLink("Return book", "ReturnBook", "Book")</li>
+
+                            @*<li>@Html.ActionLink("Lends", "Index", "Lend")</li>*@
 
                         }
 

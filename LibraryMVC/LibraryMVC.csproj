@@ -197,6 +197,7 @@
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LendController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NewController.cs" />
     <Compile Include="Controllers\ReaderController.cs" />
@@ -228,7 +229,7 @@
     <Compile Include="Migrations\201801111800265_AddHistory.Designer.cs">
       <DependentUpon>201801111800265_AddHistory.cs</DependentUpon>
     </Compile>
-	<Compile Include="Migrations\201801150017242_News.cs" />
+    <Compile Include="Migrations\201801150017242_News.cs" />
     <Compile Include="Migrations\201801150017242_News.Designer.cs">
       <DependentUpon>201801150017242_News.cs</DependentUpon>
     </Compile>
@@ -240,7 +241,7 @@
     <Compile Include="Migrations\201801151424157_fix.Designer.cs">
       <DependentUpon>201801151424157_fix.cs</DependentUpon>
     </Compile>
-	<Compile Include="Migrations\201801151111428_adddatetimenull.cs" />
+    <Compile Include="Migrations\201801151111428_adddatetimenull.cs" />
     <Compile Include="Migrations\201801151111428_adddatetimenull.Designer.cs">
       <DependentUpon>201801151111428_adddatetimenull.cs</DependentUpon>
     </Compile>
@@ -256,7 +257,14 @@
     <Compile Include="Migrations\201801151359506_BOrrow.Designer.cs">
       <DependentUpon>201801151359506_BOrrow.cs</DependentUpon>
     </Compile>
-
+    <Compile Include="Migrations\201801151540065_aa.cs" />
+    <Compile Include="Migrations\201801151540065_aa.Designer.cs">
+      <DependentUpon>201801151540065_aa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801151540377_smth.cs" />
+    <Compile Include="Migrations\201801151540377_smth.Designer.cs">
+      <DependentUpon>201801151540377_smth.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\BookTagBook.cs" />
@@ -356,21 +364,25 @@
     <Content Include="Views\Employee\Index.cshtml" />
     <Content Include="Views\BookManage\BookTag.cshtml" />
     <Content Include="Views\Book\SearchByTag.cshtml" />
-	<Content Include="Views\Employee\Index.cshtml" />
-	<Content Include="Views\Employee\Delete.cshtml" />
+    <Content Include="Views\Employee\Index.cshtml" />
+    <Content Include="Views\Employee\Delete.cshtml" />
     <Content Include="Views\Employee\Edit.cshtml" />
     <Content Include="Views\Reader\Index.cshtml" />
     <Content Include="Views\Reader\Delete.cshtml" />
     <Content Include="Views\Reader\Edit.cshtml" />
-	<Content Include="Views\New\Create.cshtml" />
+    <Content Include="Views\New\Create.cshtml" />
     <Content Include="Views\New\Delete.cshtml" />
     <Content Include="Views\New\Details.cshtml" />
     <Content Include="Views\New\Edit.cshtml" />
     <Content Include="Views\New\Index.cshtml" />
     <Content Include="Views\Book\ReturnBook.cshtml" />
     <Content Include="Views\Book\Queue.cshtml" />
-  <Content Include="Views\Book\BookWaitingOnUser.cshtml" />
-  <Content Include="Views\Home\Sent.cshtml" />
+    <Content Include="Views\Book\BookWaitingOnUser.cshtml" />
+    <Content Include="Views\Home\Sent.cshtml" />
+    <Content Include="Views\Lend\Create.cshtml" />
+    <Content Include="Views\Lend\Delete.cshtml" />
+    <Content Include="Views\Lend\Edit.cshtml" />
+    <Content Include="Views\Lend\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -407,7 +419,7 @@
     <EmbeddedResource Include="Migrations\201801111800265_AddHistory.resx">
       <DependentUpon>201801111800265_AddHistory.cs</DependentUpon>
     </EmbeddedResource>
-	<EmbeddedResource Include="Migrations\201801151111428_adddatetimenull.resx">
+    <EmbeddedResource Include="Migrations\201801151111428_adddatetimenull.resx">
       <DependentUpon>201801151111428_adddatetimenull.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801151312541_addlend.resx">
@@ -419,7 +431,7 @@
     <EmbeddedResource Include="Migrations\201801151359506_BOrrow.resx">
       <DependentUpon>201801151359506_BOrrow.cs</DependentUpon>
     </EmbeddedResource>
-	<EmbeddedResource Include="Migrations\201801150017242_News.resx">
+    <EmbeddedResource Include="Migrations\201801150017242_News.resx">
       <DependentUpon>201801150017242_News.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801150021268_New.resx">
@@ -427,6 +439,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801151424157_fix.resx">
       <DependentUpon>201801151424157_fix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801151540065_aa.resx">
+      <DependentUpon>201801151540065_aa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801151540377_smth.resx">
+      <DependentUpon>201801151540377_smth.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
