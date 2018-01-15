@@ -180,8 +180,8 @@ namespace LibraryMVC.Controllers
                         await this.UserManager.AddToRoleAsync(user.Id, "Reader");
                         return RedirectToAction("Index", "Reader");
                     }
-                    
-                    
+
+
                 }
                 //ViewBag.Name = new SelectList(db.Roles.Where(u => !u.Name.Contains("Admin"))
                 //                  .ToList(), "Name", "Name");

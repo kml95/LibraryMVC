@@ -181,12 +181,12 @@ namespace LibraryMVC.Controllers
             if (modelQueue != null)
             {
                 Lend lendBook = new Lend();
-                lendBook.DateBorrowed = DateTime.Now;
-                lendBook.DateReturn = DateTime.Now;
                 lendBook.User = modelQueue.User;
                 lendBook.Book = modelBook;
                 lendBook.State = "Waiting For akcept by user";
                 db.Queues.Remove(modelQueue);
+                db.Borrows.Add(lendBook);
+                modelBook.Available = false;
             }
 
             db.Borrows.Remove(modelLend);
@@ -198,14 +198,49 @@ namespace LibraryMVC.Controllers
         public ActionResult Queue()
         {
             List<Book> ListBook = new List<Book>();
-            string id = User.Identity.GetUserId();
-            var model = db.Queues.Where( a => a.User.Id == id).ToList();
-            TempData["QueueList"] = model;
+            string id = UserManager.FindById(User.Identity.GetUserId()).Id;
+            var model = db.Queues.Where(a => a.User.Id == id).ToList();
+
             foreach (Queue q in model)
             {
                 ListBook.Add(q.Book);
             }
+
             return View(ListBook);
+        }
+        [HttpGet]
+        public ActionResult BookWaitingOnUser()
+        {
+            List<Lend> LendBook = new List<Lend>();
+            string idUser = UserManager.FindById(User.Identity.GetUserId()).Id;
+            var model = db.Borrows.Where(a => a.User.Id == idUser).ToList();
+            foreach (Lend l in model)
+            {
+                if (l.State == "Waiting For akcept by user")
+                {
+                    LendBook.Add(l);
+                }
+            }
+            return View(LendBook);
+        }
+        [HttpPost]
+        public ActionResult BookWaitingOnUser(int id)
+        {
+            string idUser = UserManager.FindById(User.Identity.GetUserId()).Id;
+            var model = db.Borrows.Where(a => a.User.Id == idUser).ToList();
+            foreach (Lend l in model)
+            {
+                if (l.Id == id)
+                {
+                    l.Book.Available = false;
+                    l.DateBorrowed = DateTime.Now;
+                    l.State = "Borrowed";
+                    db.SaveChanges();
+                }
+            }
+
+
+            return View(model);
         }
 
 

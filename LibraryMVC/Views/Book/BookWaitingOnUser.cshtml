@@ -1,0 +1,50 @@
+﻿@model IEnumerable<LibraryMVC.Models.Lend>
+
+@{
+    ViewBag.Title = "BookWaitingOnUser";
+}
+
+<h2>BookWaitingOnUser</h2>
+
+@using (Html.BeginForm("BookWaitingOnUser", "Book", FormMethod.Post))
+{
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.State)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Book.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Book.Author)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.State)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Book.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Book.Author)
+                </td>
+                <td>
+                    @if (item.State == "Waiting For akcept by user")
+                    {
+                        @Html.Hidden("id" , item.Id)
+                        <input type="submit" value="Lend" class="btn btn-default" />
+                    }
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+
+

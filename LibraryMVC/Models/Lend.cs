@@ -9,9 +9,9 @@ namespace LibraryMVC.Models
     {
         public int Id { get; set; }
 
-        public DateTime DateBorrowed { get; set; }
+        public DateTime? DateBorrowed { get; set; }
 
-        public DateTime DateReturn { get; set; }
+        public DateTime? DateReturn { get; set; }
 
         public string State { get; set; }
 

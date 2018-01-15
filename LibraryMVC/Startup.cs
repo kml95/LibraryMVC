@@ -36,20 +36,20 @@ namespace LibraryMVC
 
                 //Here we create a Admin super user who will maintain the website                 
 
-                var user = new ApplicationUser();
-                user.UserName = "Admin";
-                user.Email = "admin@gmail.com";
+                //var user = new ApplicationUser();
+                //user.UserName = "Admin";
+                //user.Email = "admin@gmail.com";
 
-                string userPWD = "Password123#";
+                //string userPWD = "Password123#";
 
-                var chkUser = UserManager.Create(user, userPWD);
+                //var chkUser = UserManager.Create(user, userPWD);
 
-                //Add default User to Role Admin  
-                if (chkUser.Succeeded)
-                {
-                    var result1 = UserManager.AddToRole(user.Id, "Admin");
+                ////Add default User to Role Admin  
+                //if (chkUser.Succeeded)
+                //{
+                //    var result1 = UserManager.AddToRole(user.Id, "Admin");
 
-                }
+                //}
             }
 
             // creating Creating Reade role   

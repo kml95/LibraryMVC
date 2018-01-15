@@ -227,6 +227,22 @@
     <Compile Include="Migrations\201801111800265_AddHistory.Designer.cs">
       <DependentUpon>201801111800265_AddHistory.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801151111428_adddatetimenull.cs" />
+    <Compile Include="Migrations\201801151111428_adddatetimenull.Designer.cs">
+      <DependentUpon>201801151111428_adddatetimenull.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801151312541_addlend.cs" />
+    <Compile Include="Migrations\201801151312541_addlend.Designer.cs">
+      <DependentUpon>201801151312541_addlend.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801151351313_addBirtual.cs" />
+    <Compile Include="Migrations\201801151351313_addBirtual.Designer.cs">
+      <DependentUpon>201801151351313_addBirtual.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801151359506_BOrrow.cs" />
+    <Compile Include="Migrations\201801151359506_BOrrow.Designer.cs">
+      <DependentUpon>201801151359506_BOrrow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\BookTagBook.cs" />
@@ -321,16 +337,17 @@
     <Content Include="Views\BookManage\Index.cshtml" />
     <Content Include="Views\BookManage\Search.cshtml" />
     <Content Include="Views\Book\SearchCategory.cshtml" />
-	<Content Include="Views\Employee\Index.cshtml" />
-	 <Content Include="Views\BookManage\BookTag.cshtml" />
+    <Content Include="Views\Employee\Index.cshtml" />
+    <Content Include="Views\BookManage\BookTag.cshtml" />
     <Content Include="Views\Book\SearchByTag.cshtml" />
-	<Content Include="Views\Employee\Delete.cshtml" />
+    <Content Include="Views\Employee\Delete.cshtml" />
     <Content Include="Views\Employee\Edit.cshtml" />
     <Content Include="Views\Reader\Index.cshtml" />
     <Content Include="Views\Reader\Delete.cshtml" />
     <Content Include="Views\Reader\Edit.cshtml" />
-	<Content Include="Views\Book\ReturnBook.cshtml" />
+    <Content Include="Views\Book\ReturnBook.cshtml" />
     <Content Include="Views\Book\Queue.cshtml" />
+    <Content Include="Views\Book\BookWaitingOnUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -366,6 +383,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801111800265_AddHistory.resx">
       <DependentUpon>201801111800265_AddHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801151111428_adddatetimenull.resx">
+      <DependentUpon>201801151111428_adddatetimenull.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801151312541_addlend.resx">
+      <DependentUpon>201801151312541_addlend.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801151351313_addBirtual.resx">
+      <DependentUpon>201801151351313_addBirtual.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801151359506_BOrrow.resx">
+      <DependentUpon>201801151359506_BOrrow.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
