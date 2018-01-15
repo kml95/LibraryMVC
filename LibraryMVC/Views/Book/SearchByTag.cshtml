@@ -4,14 +4,15 @@
     ViewBag.Title = "SearchByTag";
 }
 
-<h2>SearchByTag</h2>
+<h2>SearchByTag</h2><br />
 
 @using (Html.BeginForm())
 {
     @Html.DropDownList("BookTags", (IEnumerable<SelectListItem>)ViewBag.Tags, "Select Tag", new { @class = "form-control" })
-    <input style='display:inline;' type="submit" value="Search" class="btn btn-default" />
+    <br />
+    <input style="display:inline" type="submit" value="Search" class="btn btn-default" />
 }
-
+<br />
 <table class="table">
     <tr>
         <th>

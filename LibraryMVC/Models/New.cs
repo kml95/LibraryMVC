@@ -5,10 +5,10 @@ using System.Web;
 
 namespace LibraryMVC.Models
 {
-    public class History
+    public class New
     {
         public int Id { get; set; }
-        public virtual Book Book { get; set; }
-        public virtual ApplicationUser User { get; set; }
+
+        public string Text { get; set; }
     }
 }

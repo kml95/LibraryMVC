@@ -1,11 +1,11 @@
-﻿@model IEnumerable<LibraryMVC.Models.BookTag>
+﻿@model IEnumerable<LibraryMVC.Models.New>
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Book Tags</h2>
-<br />
+<h2>The News</h2><br />
+
 <p>
     @Html.ActionLink("Create New", "Create")
 </p><br />
@@ -23,7 +23,7 @@
             @Html.DisplayFor(modelItem => item.Text)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) 
             @Html.ActionLink("Delete", "Delete", new { id=item.Id })
         </td>
     </tr>
