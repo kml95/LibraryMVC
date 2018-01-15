@@ -3,10 +3,21 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - Library</title>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+    @if (IsSectionDefined("AddToHead"))
+    {
+        @RenderSection("AddToHead", required: false)
+    }
+
+    @RenderSection("AddToHeadAnotherWay", required: false)
+
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
+    @*<style>
+    @RenderSection("styles", false)
+    </style>*@
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -17,13 +28,40 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Library", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        if (User.IsInRole("Admin"))
+                        {
+                            <li>@Html.ActionLink("Books", "Index", "BookManage")</li>
+                            <li>@Html.ActionLink("Employees", "Index", "Employee")</li>
+                            <li>@Html.ActionLink("Categories", "Index", "Category")</li>
+                            <li>@Html.ActionLink("BookTags", "Index", "BookTag")</li>
+                            @*<li>@Html.ActionLink("Lends", "Index", "Lend")</li>*@
+
+                        }
+                        if (User.IsInRole("Employee"))
+                        {
+                            <li>@Html.ActionLink("Books", "Index", "BookManage")</li>
+                            <li>@Html.ActionLink("Readers", "Index", "Reader")</li>
+                            <li>@Html.ActionLink("Categories", "Index", "Category")</li>
+                            <li>@Html.ActionLink("BookTags", "Index", "BookTag")</li>
+                            @*<li>@Html.ActionLink("Lends", "Index", "Lend")</li>*@
+
+                        }
+                        if (User.IsInRole("Reader"))
+                        {
+                            <li>@Html.ActionLink("Books", "Index", "Book")</li>
+                            <li>@Html.ActionLink("Your Cart", "ShowCart", "Cart")</li>
+                            @*<li>@Html.ActionLink("Lends", "Index", "Lend")</li>*@
+
+                        }
+
+                    }
+
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -33,7 +71,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - Library. Created by Michał Gil & Kamil Oleksy</p>
         </footer>
     </div>
 
