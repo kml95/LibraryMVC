@@ -8,7 +8,7 @@ namespace LibraryMVC.ViewModels
 {
     public class HomeViewModel
     {
-        public IEnumerable<New> News { get; set; }
-        public IEnumerable<Book> Books { get; set; }
+        public List<New> News { get; set; }
+        public List<Book> Books { get; set; }
     }
 }

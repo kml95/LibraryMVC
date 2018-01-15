@@ -11,6 +11,8 @@ using LibraryMVC.Models;
 using LibraryMVC.ViewModels;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Threading.Tasks;
+using System.Net.Mail;
 
 namespace LibraryMVC.Controllers
 {
@@ -170,7 +172,7 @@ namespace LibraryMVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult ReturnBook(int id)
+        public async Task<ActionResult> ReturnBook(int id)
         {
             var modelLend = db.Borrows.Where(a => a.Book.Id == id).First();
             var modelBook = db.Books.Where(a => a.Id == id).First();
@@ -186,6 +188,22 @@ namespace LibraryMVC.Controllers
                 lendBook.User = modelQueue.User;
                 lendBook.Book = modelBook;
                 lendBook.State = "Waiting For akcept by user";
+
+                // Send mail to user
+                var body = "<p>Email From: {0} ({1})</p><p>Message:</p><p>{2}</p>";
+                var message = new MailMessage();
+                //message.To.Add(new MailAddress(modelQueue.User.Email));  // replace with valid value 
+                message.To.Add(new MailAddress("8special20140@proprice.co"));  // replace with valid value 
+                message.From = new MailAddress("mailtomvc@gmail.com");  // replace with valid value
+                message.Subject = "Book is already available";
+                message.Body = string.Format(body, "Library", "mailtomvc@gmail.com", "Book is already available");
+                message.IsBodyHtml = true;
+
+                using (var smtp = new SmtpClient())
+                {
+                    await smtp.SendMailAsync(message);
+                }
+
                 db.Queues.Remove(modelQueue);
             }
 
@@ -198,11 +216,12 @@ namespace LibraryMVC.Controllers
         public ActionResult Queue()
         {
             List<Book> ListBook = new List<Book>();
-            string id = User.Identity.GetUserId();
+            string id = UserManager.FindById(User.Identity.GetUserId()).Id;
+            //string id = User.Identity.GetUserId();
             var model = db.Queues.Where( a => a.User.Id == id).ToList();
             TempData["QueueList"] = model;
             foreach (Queue q in model)
-            {
+            {   
                 ListBook.Add(q.Book);
             }
             return View(ListBook);

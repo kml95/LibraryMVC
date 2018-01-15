@@ -4,11 +4,11 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Books</h2><br />
 
 <p>
     @Html.ActionLink("Create New", "Create")
-</p>
+</p><br />
 
 @using (Html.BeginForm("Filters", "Book", FormMethod.Post))
 {
@@ -20,7 +20,7 @@
         <label style="display:inline" for="isbn"> ISBN: </label>
         <input style="display:inline" type="text" name="isbn" class="form-control" id="isbn">
         <input style="display:inline" type="submit" value="Szukaj" class="btn btn-default" />
-    </div>
+    </div><br />
 
     <table class="table">
         <tr>
@@ -63,7 +63,7 @@
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
                     @Html.ActionLink("Delete", "Delete", new { id = item.Id }) |
-                    @Html.ActionLink("Add tag", "BookTag", new { id = item.Id }) |
+                    @Html.ActionLink("Add tag", "BookTag", new { id = item.Id }) 
                 </td>
             </tr>
         }

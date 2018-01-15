@@ -1,4 +1,5 @@
-﻿@model IEnumerable<LibraryMVC.ViewModels.HomeViewModel>
+﻿@model LibraryMVC.ViewModels.HomeViewModel
+
 @{
     ViewBag.Title = "Home Page";
 }
@@ -7,42 +8,58 @@
     <img src="~/Content/images/background.jpg" alt="Sample Photo" width="1600" height="650"/>
 }
 
-<h2>The News</h2> <br />
+<h2>Latest News</h2> <br />
 
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.News)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
+   
+    @foreach (var item in Model.News)
     {
         <tr>
+            <th>
+                @Html.DisplayName("Title")
+            </th>
+        </tr>
+        <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.News)
+                @item.Text
             </td>
         </tr>
     }
 
 </table>
 
-<h2>The Books</h2> <br />
+<br /><h2>Recently added books</h2> <br />
 
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Books)
+            @Html.DisplayName("Title")
         </th>
-        <th></th>
+        <th>
+            @Html.DisplayName("Author")
+        </th>
+        <th>
+            @Html.DisplayName("ISBN")
+        </th>
+        <th>
+            @Html.DisplayName("Category")
+        </th>
     </tr>
 
-    @foreach (var item in Model)
+    @foreach (var item in Model.Books)
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Books)
+                @item.Title
+            </td>
+            <td>
+                @item.Author
+            </td>
+            <td>
+                @item.ISBN
+            </td>
+            <td>
+                @item.Category.Name
             </td>
         </tr>
     }

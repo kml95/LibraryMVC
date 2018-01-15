@@ -8,7 +8,7 @@ namespace LibraryMVC.Models
     public class History
     {
         public int Id { get; set; }
-        public Book Book { get; set; }
-        public ApplicationUser User { get; set; }
+        public virtual Book Book { get; set; }
+        public virtual ApplicationUser User { get; set; }
     }
 }
