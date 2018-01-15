@@ -155,6 +155,59 @@ namespace LibraryMVC.Controllers
             return RedirectToAction("SearchByTag");
         }
 
+        [HttpGet]
+        public ActionResult ReturnBook()
+        {
+            List<Book> ListBook = new List<Book>();
+            string id = User.Identity.GetUserId();
+            var model = db.Borrows.Where(a => a.User.Id == id).ToList();
+            foreach (Lend L in model)
+            {
+                ListBook.Add(L.Book);
+            }
+
+            return View(ListBook);
+        }
+
+        [HttpPost]
+        public ActionResult ReturnBook(int id)
+        {
+            var modelLend = db.Borrows.Where(a => a.Book.Id == id).First();
+            var modelBook = db.Books.Where(a => a.Id == id).First();
+            modelBook.Available = true;
+            modelLend.DateReturn = DateTime.Now;
+            modelLend.State = "Returned";
+            var modelQueue = db.Queues.Where(a => a.Book.Id == id).FirstOrDefault();
+            if (modelQueue != null)
+            {
+                Lend lendBook = new Lend();
+                lendBook.DateBorrowed = DateTime.Now;
+                lendBook.DateReturn = DateTime.Now;
+                lendBook.User = modelQueue.User;
+                lendBook.Book = modelBook;
+                lendBook.State = "Waiting For akcept by user";
+                db.Queues.Remove(modelQueue);
+            }
+
+            db.Borrows.Remove(modelLend);
+            db.SaveChanges();
+            return RedirectToAction("ReturnBook");
+        }
+
+        [HttpGet]
+        public ActionResult Queue()
+        {
+            List<Book> ListBook = new List<Book>();
+            string id = User.Identity.GetUserId();
+            var model = db.Queues.Where( a => a.User.Id == id).ToList();
+            TempData["QueueList"] = model;
+            foreach (Queue q in model)
+            {
+                ListBook.Add(q.Book);
+            }
+            return View(ListBook);
+        }
+
 
 
     }

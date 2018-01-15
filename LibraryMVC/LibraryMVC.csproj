@@ -331,8 +331,9 @@
     <Content Include="Views\BookManage\Edit.cshtml" />
     <Content Include="Views\BookManage\Index.cshtml" />
     <Content Include="Views\BookManage\Search.cshtml" />
-    <Content Include="Views\Book\SearchCategory.cshtml" />
-    <Content Include="Views\BookManage\BookTag.cshtml" />
+	<Content Include="Views\Book\SearchCategory.cshtml" />
+	<Content Include="Views\Employee\Index.cshtml" />
+	<Content Include="Views\BookManage\BookTag.cshtml" />
     <Content Include="Views\Book\SearchByTag.cshtml" />
     <Content Include="Views\Employee\Index.cshtml" />
     <Content Include="Views\Employee\Delete.cshtml" />
@@ -340,11 +341,13 @@
     <Content Include="Views\Reader\Index.cshtml" />
     <Content Include="Views\Reader\Delete.cshtml" />
     <Content Include="Views\Reader\Edit.cshtml" />
-    <Content Include="Views\New\Create.cshtml" />
+	<Content Include="Views\New\Create.cshtml" />
     <Content Include="Views\New\Delete.cshtml" />
     <Content Include="Views\New\Details.cshtml" />
     <Content Include="Views\New\Edit.cshtml" />
     <Content Include="Views\New\Index.cshtml" />
+	<Content Include="Views\Book\ReturnBook.cshtml" />
+    <Content Include="Views\Book\Queue.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
