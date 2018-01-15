@@ -257,14 +257,7 @@
     <Compile Include="Migrations\201801151359506_BOrrow.Designer.cs">
       <DependentUpon>201801151359506_BOrrow.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201801151540065_aa.cs" />
-    <Compile Include="Migrations\201801151540065_aa.Designer.cs">
-      <DependentUpon>201801151540065_aa.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201801151540377_smth.cs" />
-    <Compile Include="Migrations\201801151540377_smth.Designer.cs">
-      <DependentUpon>201801151540377_smth.cs</DependentUpon>
-    </Compile>
+
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\BookTagBook.cs" />
@@ -377,12 +370,13 @@
     <Content Include="Views\New\Index.cshtml" />
     <Content Include="Views\Book\ReturnBook.cshtml" />
     <Content Include="Views\Book\Queue.cshtml" />
-    <Content Include="Views\Book\BookWaitingOnUser.cshtml" />
+	<Content Include="Views\Book\BookWaitingOnUser.cshtml" />
     <Content Include="Views\Home\Sent.cshtml" />
     <Content Include="Views\Lend\Create.cshtml" />
     <Content Include="Views\Lend\Delete.cshtml" />
     <Content Include="Views\Lend\Edit.cshtml" />
     <Content Include="Views\Lend\Index.cshtml" />
+  
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -440,12 +434,7 @@
     <EmbeddedResource Include="Migrations\201801151424157_fix.resx">
       <DependentUpon>201801151424157_fix.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801151540065_aa.resx">
-      <DependentUpon>201801151540065_aa.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201801151540377_smth.resx">
-      <DependentUpon>201801151540377_smth.cs</DependentUpon>
-    </EmbeddedResource>
+
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

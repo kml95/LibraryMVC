@@ -90,6 +90,7 @@ namespace LibraryMVC.Controllers
                     book.Available = false;
                     Lend LendBook = new Lend();
                     LendBook.DateBorrowed = DateTime.Now;
+                    LendBook.DateReturn = DateTime.Now.AddDays(7);
                     LendBook.User = userModel;
                     LendBook.Book = book;
                     LendBook.State = "Borrowed";
