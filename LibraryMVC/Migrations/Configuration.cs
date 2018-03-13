@@ -52,20 +52,20 @@ namespace LibraryMVC.Migrations
                 manager.Create(user, "Password123#");
                 manager.AddToRole(user.Id, "Admin");
             }
-            if (!context.Users.Any(u => u.UserName == "employee"))
+            if (!context.Users.Any(u => u.UserName == "employee@gmail.com"))
             {
                 var store = new UserStore<ApplicationUser>(context);
                 var manager = new UserManager<ApplicationUser>(store);
-                var user = new ApplicationUser { UserName = "employee" };
+                var user = new ApplicationUser { UserName = "employee@gmail.com" };
 
                 manager.Create(user, "Employee123#");
                 manager.AddToRole(user.Id, "Employee");
             }
-            if (!context.Users.Any(u => u.UserName == "reader"))
+            if (!context.Users.Any(u => u.UserName == "reader@gmail.com"))
             {
                 var store = new UserStore<ApplicationUser>(context);
                 var manager = new UserManager<ApplicationUser>(store);
-                var user = new ApplicationUser { UserName = "reader" };
+                var user = new ApplicationUser { UserName = "reader@gmail.com" };
 
                 manager.Create(user, "Reader123#");
                 manager.AddToRole(user.Id, "Reader");
