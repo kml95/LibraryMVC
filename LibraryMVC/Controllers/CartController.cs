@@ -97,16 +97,12 @@ namespace LibraryMVC.Controllers
                     book.Borrows.Add(LendBook);
                     
                 }
+                TempData["Success"] = "Added Successfully!";
                 db.SaveChanges();
 
             }
-            
-            
-            //TODO  - napisać logikę
-            
 
-
-            //zwrocic dalej liste ksizek
+            
             return RedirectToAction("ShowCart");
         }
 

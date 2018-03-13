@@ -191,8 +191,7 @@ namespace LibraryMVC.Controllers
                 // Send mail to user
                 var body = "<p>Email From: {0} ({1})</p><p>Message:</p><p>{2}</p>";
                 var message = new MailMessage();
-                //message.To.Add(new MailAddress(modelQueue.User.Email));  // replace with valid value 
-                message.To.Add(new MailAddress("8special20140@proprice.co"));  // replace with valid value 
+                message.To.Add(new MailAddress(modelQueue.User.Email));  // replace with valid value 
                 message.From = new MailAddress("mailtomvc@gmail.com");  // replace with valid value
                 message.Subject = "Book is already available";
                 message.Body = string.Format(body, "Library", "mailtomvc@gmail.com", "Book is already available");

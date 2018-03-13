@@ -17,7 +17,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.DateBorrowed, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.DateBorrowed, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.DateBorrowed, new { htmlAttributes = new { @class = "form-control", placeholder = "11.10.2012 12:20:10" } })
                 @Html.ValidationMessageFor(model => model.DateBorrowed, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -25,7 +25,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.DateReturn, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.DateReturn, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.DateReturn, new { htmlAttributes = new { @class = "form-control", placeholder = "11.10.2012 12:20:10" } })
                 @Html.ValidationMessageFor(model => model.DateReturn, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -35,6 +35,20 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.State, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.User, "User", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("Readers", null, "", htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Book, "Book", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("Books", null, "", htmlAttributes: new { @class = "form-control" })
             </div>
         </div>
 

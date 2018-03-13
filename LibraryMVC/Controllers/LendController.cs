@@ -25,6 +25,10 @@ namespace LibraryMVC.Controllers
         // GET: Lend/Create
         public ActionResult Create()
         {
+            var roleId = db.Roles.Where(r => r.Name == "Reader").FirstOrDefault().Id;
+
+            ViewBag.Readers = new SelectList(db.Users.Where(u => u.Roles.Where(r => r.RoleId == roleId).Any()).ToList(), "Id", "Email");
+            ViewBag.Books = new SelectList(db.Books.Where(b => b.Available == true).ToList(), "Id", "Title");
             return View();
         }
 
@@ -97,6 +101,7 @@ namespace LibraryMVC.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Lend lend = db.Borrows.Find(id);
+            lend.Book.Available = true;
             db.Borrows.Remove(lend);
             db.SaveChanges();
             return RedirectToAction("Index");

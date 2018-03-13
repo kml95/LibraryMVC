@@ -139,7 +139,7 @@ namespace LibraryMVC.Controllers
 
         //
         // GET: /Account/Register
-        [AllowAnonymous]
+        //[AllowAnonymous]
         public ActionResult Register()
         {
             //ViewBag.ame = new SelectList(db.Roles.Where(u => !u.Name.Contains("Admin"))
@@ -151,7 +151,7 @@ namespace LibraryMVC.Controllers
         //
         // POST: /Account/Register
         [HttpPost]
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
