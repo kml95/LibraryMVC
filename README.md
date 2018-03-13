@@ -2,7 +2,7 @@
  
 ### 1. Open the Package Manager Console in Visual Studio
 ### 2. enable-migrations
-### 3. add-migrations seed
+### 3. add-migration seed
 ### 4. update-database 
 
 ## Now our database will be empty but we have already accounts to log into our application and manage it.
