@@ -23,7 +23,6 @@ namespace LibraryMVC.Controllers
 
         public AccountController()
         {
-            var a = 22;
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
