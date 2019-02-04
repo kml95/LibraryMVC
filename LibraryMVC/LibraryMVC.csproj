@@ -201,6 +201,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NewController.cs" />
     <Compile Include="Controllers\ReaderController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="DAL\ApplicationDbContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -257,7 +258,6 @@
     <Compile Include="Migrations\201801151359506_BOrrow.Designer.cs">
       <DependentUpon>201801151359506_BOrrow.cs</DependentUpon>
     </Compile>
-
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\BookTagBook.cs" />
@@ -370,16 +370,16 @@
     <Content Include="Views\New\Index.cshtml" />
     <Content Include="Views\Book\ReturnBook.cshtml" />
     <Content Include="Views\Book\Queue.cshtml" />
-	<Content Include="Views\Book\BookWaitingOnUser.cshtml" />
+    <Content Include="Views\Book\BookWaitingOnUser.cshtml" />
     <Content Include="Views\Home\Sent.cshtml" />
     <Content Include="Views\Lend\Create.cshtml" />
     <Content Include="Views\Lend\Delete.cshtml" />
     <Content Include="Views\Lend\Edit.cshtml" />
     <Content Include="Views\Lend\Index.cshtml" />
-  
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Test\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -434,7 +434,6 @@
     <EmbeddedResource Include="Migrations\201801151424157_fix.resx">
       <DependentUpon>201801151424157_fix.cs</DependentUpon>
     </EmbeddedResource>
-
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
