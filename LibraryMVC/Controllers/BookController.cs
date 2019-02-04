@@ -24,6 +24,7 @@ namespace LibraryMVC.Controllers
 
         public BookController()
         {
+            var b = 33;
             this.db = new ApplicationDbContext();
             this.UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(this.db));
         }
