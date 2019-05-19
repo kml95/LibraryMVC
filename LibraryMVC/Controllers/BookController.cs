@@ -158,17 +158,20 @@ namespace LibraryMVC.Controllers
         }
 
         [HttpGet]
-        public ActionResult ReturnBook()
+        public async Task<ActionResult> ReturnBook()
         {
-            List<Book> ListBook = new List<Book>();
+            //List<Book> ListBook = new List<Book>();
             string id = User.Identity.GetUserId();
-            var model = db.Borrows.Where(a => a.User.Id == id).ToList();
-            foreach (Lend L in model)
-            {
-                ListBook.Add(L.Book);
-            }
+            // var model = db.Borrows.Where(a => a.User.Id == id).ToList();
 
-            return View(model);
+            var bookList = await db.Borrows.Where(a => a.User.Id.Equals(id)).Select(l => l.Book).ToListAsync();
+
+            //foreach (Lend L in model)
+            //{
+            //    ListBook.Add(L.Book);
+            //}
+
+            return View(bookList);
         }
 
         [HttpPost]

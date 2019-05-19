@@ -196,6 +196,7 @@
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
+    <Compile Include="Controllers\Example.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LendController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -376,6 +377,14 @@
     <Content Include="Views\Lend\Delete.cshtml" />
     <Content Include="Views\Lend\Edit.cshtml" />
     <Content Include="Views\Lend\Index.cshtml" />
+    <Content Include="Views\Example\Create.cshtml" />
+    <Content Include="Views\Example\Delete.cshtml" />
+    <Content Include="Views\Example\Details.cshtml" />
+    <Content Include="Views\Example\Edit.cshtml" />
+    <Content Include="Views\Example\Index.cshtml" />
+    <Content Include="Views\Example\aa.cshtml" />
+    <Content Include="Views\Example\ss.cshtml" />
+    <Content Include="Views\Example\View.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
